@@ -13,7 +13,7 @@ export default function TabelTest1Row(props){
                 },
                 body: JSON.stringify({
                     ...data,
-                    age: Number(data).age + 1,
+                    age: Number(data.age) + 1,
                 }),
             })
             .then(res => {

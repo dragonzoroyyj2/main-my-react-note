@@ -17,6 +17,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "testserver": "json-server --watch --delay 500 --port 3300 ./src/db/data.json ",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

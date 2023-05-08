@@ -32,8 +32,8 @@
   "myData": [
     {
       "name": "apple",
-      "nickName": "small",
-      "age": null,
+      "nickName": "red",
+      "age": 4,
       "id": 1
     }
   ],
