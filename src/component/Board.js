@@ -1,6 +1,8 @@
 import '../css/Board.css';
 import axios from "axios";
 import { useEffect, useState } from "react";
+import SearchTab from "./SearchTab"
+
 import PostList from "./PostList";
 import Pagination from "./Pagination";
 import queryString from 'query-string';
@@ -90,10 +92,11 @@ export default function Board(){
 
 
     return (
-
+        <>
+        <SearchTab/>
         <div className="board">
              <h3>검색결과</h3>
-            <PostList  boardList={boardList}/>
+            <PostList  boardList={boardList} chgPageNum={chgPageNum} currentPage={currentPage}/>
             <Pagination /* total={totalCount}  */ 
                         /* boardPerPage={boardPerPage} */
                         currentPage={currentPage}
@@ -102,6 +105,6 @@ export default function Board(){
                         selectPage={selectPage}
                         />
         </div>
-
+</>
     )
 }

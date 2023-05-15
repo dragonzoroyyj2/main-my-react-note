@@ -1,25 +1,29 @@
 #post{
     width: 100%;
     height: 50px;
-    background-color: coral;
     margin-bottom: 3px;
 }
 
 #post>span{
     text-align: center;
 }
+#post>span{
+    float: left;
+    width: 10%;
+    height: 100%;
+}
 
-#post>span:first-child{
+/* #post>span:first-child{
     float: left;
     width: 5%;
     height: 100%;
-    background-color: darkcyan;
-}
+    background-color: #ffff;
+} */
 
-#post>span:nth-child(2){
+/* #post>span:nth-child(2){
     float: left;
     width: 50%;
     height: 100%;
     background-color: darkgoldenrod;
 
-}
+} */

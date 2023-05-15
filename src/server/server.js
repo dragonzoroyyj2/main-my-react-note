@@ -1,6 +1,12 @@
 const express = require('express');
+const bodyParser = require("body-parser"); // 요청정보 처리
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true })); // 객체 형식 처리
+
 const db = require('./config/db.js');
 
 
@@ -83,16 +89,12 @@ app.get('/paginatedBoard', (req, res)=>{
     console.log('boardPerPage : ' , boardPerPage)
     console.log('parseInt(req.query.totalCount) : ' , req.query.totalCount)
 
-    var sql = 'select * from board limit ?, ?';
+    var sql = 'select * from test_react.board order by id desc limit ?, ?';
 
     db.query(sql, [startIndex,  boardPerPage], (err, data)=> {
 
         if(!err){
             //console.log(data);
-
-            
-
-            
             const results = {};
             results.totalCount = parseInt(req.query.totalCount);
             results.boardPerPage = boardPerPage;
@@ -112,10 +114,66 @@ app.get('/paginatedBoard', (req, res)=>{
     })
 });
 
+app.post('/board_add', (req, res)=>{
+    console.log('/board_add');
+    console.log('/req' , req.body);
+    const title = req.body.title;
+    const content = req.body.content;
+    const wname = req.body.wname;
+
+    var sql = 'insert into test_react.board(title, content, wname, admission_date) values(?, ?, ?, SYSDATE() )';
+
+    db.query(sql, [title,  content, wname], (err, result)=> {
+
+        if(!err){
+           res.send(result);//응답을 클라이언트 쪽으로 보낸다.
+        }else{
+            console.log(err);
+        }
+    })
+});
 
 
+app.post("/board_detail", (req, res) => {
+      var key_id = parseInt(req.body.key_id);
+    
+      const sqlQuery =
+        "select id, title, content, wname, date_format(admission_date,'%y-%m-%d') as admission_date from test_react.board where id = ?;";
+
+      db.query(sqlQuery, [key_id], (err, result) => {
+        res.send(result);
+      });
+    });
+
+app.post("/board_update", (req, res) => {
 
 
+    console.log('update : ' , req.body)
+
+    var key_id = req.body.id;
+    var title = req.body.title;
+    var content = req.body.content;
+    var wname = req.body.wname;
+  
+    const sql= 'update test_react.board set title=?, content=?, wname=? where id=31';
+
+    // ?에 title, content, num 파라미터 전달 -> db에 수정이 일어남
+    db.query(sql, [title, content, wname, key_id], (err, result) => {
+      // result에 아무것도 없음. update는 반환되는 값없음. 그래서 사실 안보내도됨
+      res.send(result);
+    });
+  });
+
+app.post("/board_delete", (req, res) => {
+    const id = req.body.id;
+    console.log("/delete(id) => ", id);
+  
+    const sqlQuery = "delete from test_react.board where id = ?;";
+    db.query(sqlQuery, [id], (err, result) => {
+      console.log(err);
+      res.send(result);
+    });
+  });
 
 
 app.listen(PORT, ()=>{
