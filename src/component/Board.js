@@ -6,7 +6,7 @@ import Pagination from "./Pagination";
 import queryString from 'query-string';
 
 export default function Board(){
-    const [boardList, setBoardList] = useState([]);    
+    const [boardList, setBoardList] = useState([]);     
     const [searchText, setSearchText] = useState('');
     const [totalCount, setTotalCount] = useState(0);
 
