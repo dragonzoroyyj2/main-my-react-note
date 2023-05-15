@@ -8,16 +8,21 @@ import EmptyPage from './component/EmptyPage';
 import Header from './component/Header'
 import TabelTest1 from './component/TabelTest1'
 import TabelTest1Add from './component/TabelTest1Add'
-
+import TestReact from './component/TestReact'
+import SearchTab from './component/SearchTabClass';
+import Board from './component/Board';
 
 function App() {
   return(
     <BrowserRouter>
       <div className='App'>
         <Header />
+        <SearchTab/>
         <Routes>
           <Route path="/" element={<DayList />} /> 
           <Route path="/day/:day" element={<Day />} /> 
+          <Route path="/board" element={<Board />} /> 
+          <Route path="/test_react" element={<TestReact />} /> 
           <Route path="/table_test1_add" element={<TabelTest1Add />} /> 
           <Route path="/table_test1" element={<TabelTest1 />} /> 
           <Route path="/create_word" element={<CreateWord />} /> 

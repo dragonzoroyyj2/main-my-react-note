@@ -1,0 +1,24 @@
+#pagination{
+    width: 100%;
+    height: 10%;
+    background-color: burlywood;
+    text-align: center;
+}
+
+#pagination>pagination-inner{
+    display: inline-block;
+    background-color: darkgreen;
+}
+
+#page{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: red;
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 7px;
+    box-sizing: border-box;
+    margin-right: 5px;
+    cursor: pointer;
+}

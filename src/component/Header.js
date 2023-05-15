@@ -6,7 +6,12 @@ export default function Headers(){
         <Link to="/">일별 상품(재고)</Link>
     </h1>
     <div className="menu">
-    
+        <Link to="/board" className="link">
+         board
+        </Link>
+        <Link to="/test_react" className="link">
+            test_react
+        </Link>
         <Link to="/table_test1_add" className="link">
             add
         </Link>
