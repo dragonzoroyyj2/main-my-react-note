@@ -138,7 +138,7 @@ app.post("/board_detail", (req, res) => {
       var key_id = parseInt(req.body.key_id);
     
       const sqlQuery =
-        "select id, title, content, wname, date_format(admission_date,'%y-%m-%d') as admission_date from test_react.board where id = ?;";
+        "select id, title, content, wname, date_format(admission_date,'%y-%m-%d') as admission_date from test_react.board where id = ?";
 
       db.query(sqlQuery, [key_id], (err, result) => {
         res.send(result);
